@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{title}}
+{% endblock title %}
+
+
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		{% for p in products %}
+		<!-- <div class="col-md-6 mt-5"> -->
+			<div class="card-deck" style="width: 23%; margin: 25px 14px 25px 14px;">
+				<div class="card">
+					<img class="card-img-top" height="300px" src="{{p.photo.url}}" alt="Card image cap">
+					<div class="card-body">
+						<h4 class="card-title text-center text-secondary mt-2">
+							<a href="{% url 'pages:product_by_slug' p.slug %}" class="list-group-item-action">
+								{{p.title}}
+							</a>
+						</h4>
+						<p class="card-text text-center lead">
+							{{p.summary}}<br>
+							<strong>Category: </strong><a
+								href="{% url 'pages:category_by_slug' p.category.slug %}">{{p.category.title}}</a><br>
+							<a href="{% url 'wishlists:add_wishlist' p.id %}">Add To Wish List</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		<!-- </div> -->
+		{% endfor %}
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

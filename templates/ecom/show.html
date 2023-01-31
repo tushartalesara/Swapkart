@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{title}}
+{% endblock title %}
+
+
+
+{% block content %}
+
+<!-- <div class="col-md-4 mt-4">
+  <ul class="list-group">
+    <li class="list-group-item"><a href="{% url 'pages:all_products' %}">All Products</a></li>
+  </ul>
+</div> -->
+<div class="d-flex">
+  <div class="col-md-8 mt-4">
+    <img src="{{product.photo.url}}" width="400px" class="img-thumbnail" alt="">
+  </div>
+  <div class="col-md-10 mt-4">
+    <h1 class="page-header">{{product.title}}</h1>
+    <br>
+    <p>{{product.description}}</p>
+    <p>Price : Rs. {{product.price}}</p>
+    <p>Avaiable : {{product.quantity}}</p>
+    <p><a href="{% url 'cart:cart_add' product.slug %}">Add to cart</a></p>
+  </div>
+</div>
+{% endblock content %}
